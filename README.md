@@ -7,6 +7,7 @@ The Sudoku Microservice project is a simple Java microservice designed to valida
 - [Prerequisites](#prerequisites)
 - [Project Structure](#project-structure)
 - [Usage](#usage)
+- [Deployed Version](#deployed-Version)
 
 ## Prerequisites
 
@@ -86,3 +87,10 @@ Before running the Docker commands, make sure you have the following installed:
 13. Access the web application:
 
     Open your web browser and navigate to http://localhost:8080/ to view the deployed web application.
+
+## Deployed Version
+
+The Sudoku Microservice is also deployed on Azure. You can access the deployed version using the following URL:
+
+https://sudoku-microservice.azurewebsites.net/validate?row=0&col=2&num=7
+
