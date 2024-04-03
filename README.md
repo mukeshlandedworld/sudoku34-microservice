@@ -1,6 +1,6 @@
 # Sudoku Microservice Java Web Service
 
-This project demonstrates how to develop a microfrontend web application using Java without any MVC framework and JavaFX. It provides a simple UI for users to enter a number, validate the input, and display alerts based on the validation result. The validation is performed by calling an external Sudoku microservice.
+The Sudoku Microservice project is a simple Java microservice designed to validate Sudoku puzzle entries. It provides an endpoint to validate the entered number for a specific row and column in a Sudoku grid, informing the user whether the input is valid or not. The generation of the Sudoku grid itself is out of scope for this project and can be obtained from an external source or mocked.
 
 ## Table of Contents
 
@@ -14,7 +14,6 @@ Before running the Docker commands, make sure you have the following installed:
 
 - [Docker](https://docs.docker.com/get-docker/): Make sure Docker Desktop or Docker Engine is installed and running on your system.
 - [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html): Install JDK 11 or later.
-- Apache Tomcat (or any other servlet container)
 - curl (for testing with the Sudoku microservice)
 
 ## Project Structure
@@ -22,42 +21,52 @@ Before running the Docker commands, make sure you have the following installed:
 1. The project directory structure is as follows:
 
    ```bash
-   - sudoku34-microfronted
-   - Dockerfile # Contains instructions for building the Docker image.
-   - tomacat.war # The WAR file of your Java web application.
-   - README.md # This file providing instructions and documentation.
-   - Other project files...
-
+   sudoku-microservice/
+      │
+      ├── backend/
+      │   ├── src/
+      │   │   └── main/
+      │   │       ├── java/
+      │   │       │   └── com/
+      │   │       │       └── example/
+      │   │       │           └── sudoku/
+      │   │       │               ├── SudokuApplication.java
+      │   │       │               ├── SudokuController.java
+      │   │       │               └── SudokuValidator.java
+      │   │       └── resources/
+      │   │           └── application.properties
+      │   └── pom.xml
+      │
+      └── frontend/
+          ├── index.html
+          ├── style.css
+          └── script.js
 
 ## Usage
 
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/mukeshlandedworld/sudoku34-microfronted.git
+   git clone https://github.com/mukeshlandedworld/sudoku34-microservice.git
 
 2. Navigate to the project directory:
 
    ```bash
-   cd sudoku34-microfronted
+   cd sudoku34-microservice
 
-4. Compile the Java source files:
-
-   ```bash
-   javac -d WEB-INF/classes src/com/sudoku/servlets/*.java
-
-6. Package the web application into a WAR file:
+4. Build the backend:
 
    ```bash
-   jar -cvf sudoku.war *
+   ./mvnw package
 
-7. Deploy the WAR file to your Tomcat server:
+6. Run the backend microservice::
 
-   Copy the sudoku.war file to the webapps directory of your Tomcat installation.
+   ```bash
+   java -jar target/sudoku-microservice-1.0-SNAPSHOT.jar
 
-8. Start your Tomcat server.
+7. Access the Sudoku application in your web browser:
 
-9. Open your web browser and navigate to http://localhost:8080/ to access the Sudoku microfrontend application.
+   Open http://localhost:8080 in your preferred web browser.
 
 6. Build the MVN Package:
 
@@ -67,12 +76,12 @@ Before running the Docker commands, make sure you have the following installed:
 6. Build the Docker image:
 
    ```bash
-   docker build -t sudoku34-tomacat-image .
+   docker build -t sudoku34-microservice-image .
 
 6. Run the Docker container:
 
    ```bash
-   docker run -d -p 8080:8080 sudoku34-tomacat-image
+   docker run -d -p 8080:8080 sudoku34-microservice-image
 
 13. Access the web application:
 
