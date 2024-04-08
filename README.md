@@ -86,7 +86,7 @@ Before running the Docker commands, make sure you have the following installed:
 
 13. Access the web application:
 
-    Open your web browser and navigate to http://localhost:8080/ to view the deployed web application.
+    Open your web browser and navigate to http://localhost:8080/validate?row=0&col=2&num=7 to view the deployed web application.
 
 ## Deployed Version
 
